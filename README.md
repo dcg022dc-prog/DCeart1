@@ -11,10 +11,11 @@ From the project behind the viral God's Eye View series, formerly known as World
   <img src="assets/god-view-cctv.jpg" alt="Public camera feeds projected into 3D" width="49%">
 </p>
 
-You asked, so it's happening. Code is being prepared for public release.
+You asked, so it's happening. Code is in final testing ahead of public release.
 
 **Updates**
 
+- **Aug 18, 2026** — release candidate in trusted testing (thanks!); public release by August 24, 2026
 - **Jul 30, 2026** — launch date set: August 18, 2026
 - **Jun 22, 2026** — placeholder repo created
 
