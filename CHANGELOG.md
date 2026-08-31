@@ -43,6 +43,9 @@ of current runtime behavior, see [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md
   outages and wait for measured photoreal-surface evidence before a 3D model
   takes over from its billboard.
 - Cockpit altitude uses aviation MSL data rather than Cesium render height.
+- The bundled Natural Earth region and neighborhood-polygon packs load through a
+  single import path in both the browser and `node:test`, so the production
+  build no longer externalizes `node:fs` for two browser data modules.
 
 ### Security
 

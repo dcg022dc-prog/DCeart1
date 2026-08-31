@@ -14,11 +14,8 @@ import { createRetryableLoader } from './retryableLoad.js';
 
 // bbox = [west, south, east, north]; only load a city file when the point falls in its box.
 const CITY_FILES = [
-  { id: 'san-francisco', bbox: [-122.55, 37.70, -122.35, 37.84], loader: () => import('./local_data/neighborhoods/san-francisco.json') },
+  { id: 'san-francisco', bbox: [-122.55, 37.70, -122.35, 37.84], loader: () => import('./local_data/neighborhoods/san-francisco.json', { with: { type: 'json' } }) },
 ];
-
-const isNode = typeof process !== 'undefined' && !!process.versions?.node
-  && typeof window === 'undefined';
 
 /**
  * city id → memoized loader. Failures are NOT memoized: a transient
@@ -94,18 +91,10 @@ function cityLoader(city) {
   let loader = _cityLoaders.get(city.id);
   if (!loader) {
     loader = createRetryableLoader(async () => {
-      let fc;
-      if (isNode) {
-        // node:test path — plain dynamic JSON import needs an import attribute in Node,
-        // so read the file directly (same dual-path pattern as naturalEarthRegions.js).
-        const { readFileSync } = await import(/* @vite-ignore */ 'node:fs');
-        const url = new URL(`./local_data/neighborhoods/${city.id}.json`, import.meta.url);
-        fc = JSON.parse(readFileSync(url, 'utf8'));
-      } else {
-        // Vite bundles the JSON file as a module.
-        const mod = await city.loader();
-        fc = mod.default || mod;
-      }
+      // One path for both runtimes: Vite bundles the JSON as a module, and the
+      // import attribute is what Node needs to load the same file under node:test.
+      const mod = await city.loader();
+      const fc = mod.default || mod;
       return Array.isArray(fc.features) ? fc.features : [];
     });
     _cityLoaders.set(city.id, loader);
