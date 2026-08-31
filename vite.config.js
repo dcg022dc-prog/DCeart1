@@ -3373,7 +3373,7 @@ function gbfsProxy() {
             return;
           }
           const body = await upstream.text();
-          if (body.length > GBFS_MAX_BODY_BYTES) {
+          if (Buffer.byteLength(body, 'utf8') > GBFS_MAX_BODY_BYTES) {
             res.writeHead(502, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
             res.end(JSON.stringify({ error: 'GBFS upstream response too large' }));
             return;
