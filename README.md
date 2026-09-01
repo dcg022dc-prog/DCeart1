@@ -20,7 +20,7 @@ Photorealistic 3D globe. Live aircraft, ships, satellites, earthquakes, traffic,
 
 🏆 **#1 on GitHub Trending this past week — thank you.** You asked for a one-click install; it's here.
 
-⚡ **No keys, no signup, no config file.** One click through [Pinokio](https://pinokio.computer/) — or `npm install && npm run dev` — and the globe is live: real aircraft, real satellites, real cameras. Keys are power-ups you paste into the app later. **[→ Quick Start](#-quick-start)**
+⚡ **No keys, no signup, no config file.** One click through [Pinokio](https://pinokio.computer/) — or `npm install && npm run dev` — and the globe comes to life. Keys are power-ups you paste into the app later. **[→ Quick Start](#-quick-start)**
 
 </div>
 
@@ -42,10 +42,13 @@ Most open-source intelligence is a pile of browser tabs. The signals are abundan
 
 > Half the magic is that it looks like a forbidden cockpit. The other half is that every line of code is inspectable.
 
-Most feeds are live; explicitly labeled traffic, camera-pose, and launch
-experiences may be simulated, estimated, or reconstructed.
+Most feeds are live or regularly refreshed. Traffic is simulated along real
+roads using aggregate location data. CCTV camera poses and rocket launch
+trajectories are coarse estimates.
 
-And it's honest about money: the best free and nearly-free APIs give you the real experience out of the box — then it's yours to extend with bigger, more expensive data sources whenever you're ready.
+You'll be surprised how accessible this is. Free and nearly-free APIs deliver
+a surprisingly complete experience out of the box — then it's yours to extend
+with bigger data sources whenever you're ready.
 
 ---
 
