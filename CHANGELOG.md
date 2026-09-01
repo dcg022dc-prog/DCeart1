@@ -5,6 +5,13 @@ of current runtime behavior, see [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md
 
 ## [Unreleased]
 
+## [0.1.1] — 2026-09-01 — Installation and live-data fixes
+
+### Changed
+
+- Tightened the README opening around keyless setup, source freshness, modeled
+  experiences, and the accessibility of the provider stack.
+
 ### Fixed
 
 - Pinokio now recognizes its nested successful-install marker, so a completed
