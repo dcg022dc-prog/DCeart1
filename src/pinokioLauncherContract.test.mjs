@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { realpathSync } from 'node:fs';
-import { mkdir, mkdtemp, rm, symlink, writeFile } from 'node:fs/promises';
+import { access, copyFile, mkdir, mkdtemp, rm, symlink, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
@@ -62,12 +62,9 @@ test('Pinokio start has one fail-closed launcher process', () => {
 test('Pinokio install records success explicitly instead of trusting node_modules', async () => {
   const install = require('../pinokio/install.js');
   const fs = await import('node:fs/promises');
-  const menuSource = await fs.readFile(new URL('../pinokio/pinokio.js', import.meta.url), 'utf8');
   const installSource = await fs.readFile(new URL('../scripts/pinokio-install.mjs', import.meta.url), 'utf8');
   assert.equal(install.run.at(-1).params.message, 'node scripts/pinokio-install.mjs');
   assert.equal(install.run[0].when, "{{!kernel.exists(cwd, 'ENVIRONMENT')}}");
-  assert.match(menuSource, /info\.exists\('\.installed'\)/);
-  assert.doesNotMatch(menuSource, /exists\('\.\.\/node_modules'\)/);
   assert.match(installSource, /includeKeychain: false/);
   assert.match(installSource, /authoritativeEnvironment: true/);
   assert.match(installSource, /applyPinokioEnvironment\(\)/);
@@ -77,6 +74,79 @@ test('Pinokio install records success explicitly instead of trusting node_module
   }
   for (const field of SHARING_FIELDS) {
     assert.equal(field in install.run.at(-1).params.env, false);
+  }
+});
+
+test('Pinokio menu resolves the nested install marker and exposes each lifecycle state', async (t) => {
+  const fixture = await mkdtemp(path.join(os.tmpdir(), 'gev-pinokio-menu-'));
+  t.after(() => rm(fixture, { recursive: true, force: true }));
+  const launcherDir = path.join(fixture, 'app', 'pinokio');
+  const launcherPath = path.join(launcherDir, 'pinokio.js');
+  const markerPath = path.join(launcherDir, '.installed');
+  await mkdir(launcherDir, { recursive: true });
+  await copyFile(new URL('../pinokio/pinokio.js', import.meta.url), launcherPath);
+
+  const existsCalls = [];
+  const kernel = {
+    exists: async (...chunks) => {
+      existsCalls.push(chunks);
+      try {
+        await access(path.resolve(...chunks));
+        return true;
+      } catch {
+        return false;
+      }
+    },
+  };
+  const runtime = { running: null, url: null };
+  const info = {
+    exists: () => assert.fail('menu must resolve the marker through kernel.exists'),
+    running: (href) => runtime.running === href,
+    local: () => runtime.url ? { url: runtime.url } : {},
+  };
+  const { menu } = require(launcherPath);
+  const render = async ({ installed, running = null, url = null }) => {
+    if (installed) await writeFile(markerPath, 'ready\n');
+    else await rm(markerPath, { force: true });
+    runtime.running = running;
+    runtime.url = url;
+    const items = await menu(kernel, info);
+    assert.equal(items.filter((item) => item.default).length, 1);
+    return items.map(({ text, href, default: isDefault = false }) => ({ text, href, default: isDefault }));
+  };
+
+  assert.deepEqual(await render({ installed: false }), [
+    { text: 'Install', href: 'install.js', default: true },
+  ]);
+  assert.deepEqual(await render({ installed: true }), [
+    { text: 'Start', href: 'start.js', default: true },
+    { text: 'Update', href: 'update.js', default: false },
+    { text: 'Repair installation', href: 'reset.js', default: false },
+  ]);
+  for (const [running, text] of [
+    ['install.js', 'Installing'],
+    ['update.js', 'Updating'],
+    ['reset.js', 'Resetting'],
+  ]) {
+    assert.deepEqual(await render({ installed: true, running }), [
+      { text, href: running, default: true },
+    ]);
+  }
+  assert.deepEqual(await render({ installed: true, running: 'start.js' }), [
+    { text: 'Starting', href: 'start.js', default: true },
+  ]);
+  assert.deepEqual(await render({
+    installed: true,
+    running: 'start.js',
+    url: 'http://127.0.0.1:4173/',
+  }), [
+    { text: "Open God's Eye View", href: 'http://127.0.0.1:4173/', default: true },
+    { text: 'Server', href: 'start.js', default: false },
+  ]);
+  assert.ok(existsCalls.length >= 7);
+  const resolvedLauncherDir = realpathSync(launcherDir);
+  for (const chunks of existsCalls) {
+    assert.deepEqual(chunks, [resolvedLauncherDir, '.installed']);
   }
 });
 

@@ -7,6 +7,10 @@ of current runtime behavior, see [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md
 
 ### Fixed
 
+- Pinokio now recognizes its nested successful-install marker, so a completed
+  one-click install exposes Start instead of returning to Install.
+- The keyless `dev-fresh.sh` startup summary now names Esri World Imagery with
+  keyless terrain and identifies OpenStreetMap as the fallback.
 - All three VIIRS sources now reach the Active Fires layer. Merging a source's
   detections used argument spread, which exceeds the engine's argument limit on
   the two largest sources and dropped them entirely — leaving roughly a third of

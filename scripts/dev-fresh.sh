@@ -329,7 +329,7 @@ if [[ -n "${GOOGLE_MAPS_API_KEY}" ]]; then
 elif [[ -n "${CESIUM_ION_TOKEN}" ]]; then
   echo "Startup map: Google Photorealistic 3D Tiles (Cesium ion)"
 else
-  echo "Startup map: OpenStreetMap with keyless terrain"
+  echo "Startup map: Esri World Imagery with keyless terrain (OpenStreetMap fallback)"
 fi
 [[ -n "${CESIUM_ION_TOKEN}" ]] && echo "Cesium ion token: configured — Google 3D, Bing, and world-terrain stacks available" || echo "Cesium ion token: not set"
 [[ -n "${TOMTOM_API_KEY}" ]] && echo "TomTom key (live traffic flow): configured" || echo "TomTom key (live traffic flow): not set — simulated traffic"

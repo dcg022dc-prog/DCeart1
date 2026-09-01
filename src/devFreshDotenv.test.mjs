@@ -80,13 +80,38 @@ test('dev-fresh passes names-only boot provenance before resolving file fallback
   assert.match(source, /put_env GEV_KEY_SETUP_EXTERNAL_KEYS "\$\{KEY_SETUP_EXTERNAL_KEYS_CSV\}"/);
 });
 
+const bashTest = process.platform === 'win32' ? test.skip : test;
+
+bashTest('dev-fresh reports the real keyless startup map and fallback', async () => {
+  const script = await fs.readFile(new URL('../scripts/dev-fresh.sh', import.meta.url), 'utf8');
+  const start = script.indexOf('if [[ -n "${GOOGLE_MAPS_API_KEY}" ]]; then\n  echo "Startup map:');
+  const end = script.indexOf('\nfi', start);
+  assert.ok(start >= 0 && end > start, 'startup-map status block not found in dev-fresh.sh');
+  const block = script.slice(start, end + 3);
+  assert.doesNotMatch(block, /Startup map: OpenStreetMap with keyless terrain/);
+
+  const { execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const run = promisify(execFile);
+  const keyless = await run('bash', ['-c', block], {
+    env: {
+      PATH: process.env.PATH,
+      GOOGLE_MAPS_API_KEY: '',
+      CESIUM_ION_TOKEN: '',
+    },
+  });
+  assert.equal(
+    keyless.stdout.trim(),
+    'Startup map: Esri World Imagery with keyless terrain (OpenStreetMap fallback)',
+  );
+});
+
 
 // Stock macOS ships bash 3.2, where expanding an EMPTY array under `set -u`
 // is a fatal "unbound variable" — the `:-` guard on the provenance CSV is what
 // keeps the keyless `dev-fresh.sh` launch alive there. Newer bash never fails
 // this way, so the idiom itself is asserted textually and the block's behavior
 // is exercised for both the keyless and the populated case.
-const bashTest = process.platform === 'win32' ? test.skip : test;
 bashTest('the external-keys provenance block survives set -u keyless and joins names when keys are exported', async () => {
   const script = await fs.readFile(new URL('../scripts/dev-fresh.sh', import.meta.url), 'utf8');
   const start = script.indexOf('KEY_SETUP_EXTERNAL_KEYS=()');

@@ -2253,6 +2253,10 @@ silently demoting every later lookup for the session.
 ## Auth + Launch
 
 - Recommended launcher: `./scripts/dev-fresh.sh` (also: `dev-secure.sh` for stricter bindings, `dev-cctv.sh` for CCTV source-pack tuning)
+- A successful Pinokio install writes the owner-only `pinokio/.installed`
+  marker. The nested launcher menu resolves that marker from its own directory:
+  an absent marker exposes Install, a present marker exposes Start, and a
+  running server with a captured ready URL exposes Open God's Eye View.
 - Build gate: `npm run build`
 - Network access: local-only by default (`HOST=localhost` in dev-fresh.sh); LAN is an explicit opt-in via `HOST=0.0.0.0` (launcher prints a key-exposure warning + LAN URL; see SECURITY.md)
 - OpenSky default mode: OAuth (`OPENSKY_AUTH_MODE=oauth`; `anon` works without credentials)

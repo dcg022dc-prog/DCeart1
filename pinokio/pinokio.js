@@ -2,8 +2,8 @@ module.exports = {
   version: '3.6',
   title: "God's Eye View",
   description: 'A live 3D intelligence console for planet Earth.',
-  menu: async (_kernel, info) => {
-    const installed = info.exists('.installed');
+  menu: async (kernel, info) => {
+    const installed = await kernel.exists(__dirname, '.installed');
     const installing = info.running('install.js');
     const starting = info.running('start.js');
     const updating = info.running('update.js');
