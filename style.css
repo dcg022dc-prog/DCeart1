@@ -821,7 +821,11 @@ body.cockpit-mode #cockpit-cloud-effects.active {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: var(--bg-dark);
+  background-color: var(--bg-dark);
+  background-image: url('/portada.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
