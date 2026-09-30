@@ -1,10 +1,6 @@
 <div align="center">
 
-# 🌐 God's Eye View
-
-### A spy-satellite simulator in your browser — then you realize the sources are public and the data is real.
-
-Photorealistic 3D globe. Live aircraft, ships, satellites, earthquakes, traffic, and public cameras. Hands-free voice control powered by a realtime AI agent.
+# ojoDC
 
 *No place left behind.*
 
