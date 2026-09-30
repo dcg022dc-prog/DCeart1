@@ -12,7 +12,7 @@
 
 [![#1 on GitHub Trending](https://img.shields.io/badge/%231_GitHub_Trending-thank_you!-F0A63C?style=flat-square&logo=github)](https://github.com/trending)
 
-🏆 **#1 on GitHub Trending this past week — thank you.** You asked for a one-click install; it's here.
+* You asked for a one-click install; it's here pues sobres 
 
 ⚡ **No keys, no signup, no config file.** One click through [Pinokio](https://pinokio.computer/) — or `npm install && npm run dev` — and the globe comes to life. Keys are power-ups you paste into the app later. **[→ Quick Start](#-quick-start)**
 
