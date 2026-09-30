@@ -67,7 +67,7 @@ with bigger data sources whenever you're ready.
 
 (https://img.youtube.com/vi/GRJaKcXZS94/maxresdefault.jpg)](https://www.youtube.com/watch?v=GRJaKcXZS94)
 
-▶️ **[The full walkthrough of everything below, on YouTube](https://www.youtube.com/watch?v=GRJaKcXZS94)**
+▶️ **DC laboratory 
 
 </div>
 
