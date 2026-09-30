@@ -1,63 +1,4 @@
-# 🌎 DCeart
 
-```{=html}
-<p align="center">
-```
-`<img src="assets/dc-laboratory.png" alt="DC-LABORATORY" width="180">`{=html}
-```{=html}
-</p>
-```
-```{=html}
-<h1 align="center">
-```
-DCeart
-```{=html}
-</h1>
-```
-```{=html}
-<p align="center">
-```
-`<strong>`{=html}Plataforma de visualización geoespacial y exploración
-del planeta`</strong>`{=html}`<br>`{=html} Un proyecto tecnológico de
-`<strong>`{=html}DC-LABORATORY`</strong>`{=html}.
-```{=html}
-</p>
-```
-
-------------------------------------------------------------------------
-
-## 🛰️ Descripción
-
-**DCeart** es un proyecto de código abierto orientado a la visualización
-de información geoespacial sobre un globo terrestre interactivo.
-
-La idea del proyecto es reunir en una interfaz moderna diferentes
-fuentes de información pública y representarlas de forma clara sobre el
-planeta, permitiendo explorar datos, ubicaciones y eventos desde una
-perspectiva global.
-
-### Objetivos
-
--   🌍 Explorar el planeta mediante una interfaz 3D.
--   🛰️ Visualizar información relacionada con objetos y eventos
-    geoespaciales.
--   ✈️ Integrar fuentes públicas de datos cuando estén disponibles.
--   📡 Facilitar la incorporación de nuevas fuentes de información.
--   🤖 Preparar una arquitectura que pueda ampliarse con herramientas de
-    IA.
--   📱 Mantener el proyecto adaptable a dispositivos móviles.
-
-> **DCeart no pretende sustituir las fuentes oficiales.** La
-> disponibilidad, precisión y actualización de cada dato dependen de la
-> fuente que lo proporcione.
-
-------------------------------------------------------------------------
-
-## 🛡️ Insignias de seguridad y estado
-
-```{=html}
-<p align="center">
-```
 ![Open
 Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen)
 ![Security](https://img.shields.io/badge/Security-Reviewed-blue)
@@ -73,36 +14,7 @@ Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen)
 DCeart debe seguir estos principios:
 
 1.  **No almacenar información personal innecesaria.**
-2.  **No incluir claves API, contraseñas o tokens dentro del código
-    fuente.**
-3.  Utilizar variables de entorno para credenciales.
-4.  Validar y controlar los datos recibidos de fuentes externas.
-5.  Mantener las dependencias actualizadas.
-6.  Documentar las fuentes externas utilizadas.
-7.  Respetar las licencias y condiciones de uso de cada fuente de datos.
-8.  No presentar información no verificada como si fuera un dato
-    oficial.
 
-------------------------------------------------------------------------
-
-## 🧩 Arquitectura prevista
-
-``` text
-                    ┌─────────────────────┐
-                    │       DCeart        │
-                    │  Interfaz mundial   │
-                    └──────────┬──────────┘
-                               │
-              ┌────────────────┼────────────────┐
-              │                │                │
-          🌍 Globo          📡 Datos          🤖 IA
-              │                │                │
-        Visualización     Fuentes públicas   Herramientas
-              │                │                │
-              └────────────────┼────────────────┘
-                               │
-                       🔐 Capa de seguridad
-```
 
 La arquitectura puede evolucionar sin depender de una única fuente de
 datos.
