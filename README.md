@@ -30,9 +30,9 @@
 
 ## 🌍 Why This Exists
 
-**You asked, so it's happening.** God's Eye View is open source. Track the world live. Talk to it. Break it. Extend it.
+**You asked, so it's happening.** ojoDC is open source. Track the world live. Talk to it. Break it. Extend it.
 
-Most open-source intelligence is a pile of browser tabs. The signals are abundant, but the *interface* is the bottleneck. God's Eye View turns those signals into a **place**: the world is already broadcasting — flight transponders, ship beacons, orbital elements, seismographs, public cameras — and this makes it visible on a photorealistic 3D Earth in real time. No classified clearance required; it's public signal all the way down, and the interface runs in your browser, under your control.
+Most open-source intelligence is a pile of browser tabs. The signals are abundant, but the *interface* is the bottleneck. ojoDC View turns those signals into a **place**: the world is already broadcasting — flight transponders, ship beacons, orbital elements, seismographs, public cameras — and this makes it visible on a photorealistic 3D Earth in real time. No classified clearance required; it's public signal all the way down, and the interface runs in your browser, under your control.
 
 > Half the magic is that it looks like a forbidden cockpit. The other half is that every line of code is inspectable.
 
@@ -65,7 +65,7 @@ with bigger data sources whenever you're ready.
 
 <div align="center">
 
-[![YouTube video about the God's Eye View open source release](https://img.youtube.com/vi/GRJaKcXZS94/maxresdefault.jpg)](https://www.youtube.com/watch?v=GRJaKcXZS94)
+(https://img.youtube.com/vi/GRJaKcXZS94/maxresdefault.jpg)](https://www.youtube.com/watch?v=GRJaKcXZS94)
 
 ▶️ **[The full walkthrough of everything below, on YouTube](https://www.youtube.com/watch?v=GRJaKcXZS94)**
 
