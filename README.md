@@ -14,9 +14,6 @@
 
 * You asked for a one-click install; it's here pues sobres 
 
-⚡ **No keys, no signup, no config file.** One click through [Pinokio](https://pinokio.computer/) — or `npm install && npm run dev` — and the globe comes to life. Keys are power-ups you paste into the app later. **[→ Quick Start](#-quick-start)**
-
-</div>
 
 ---
 
@@ -109,15 +106,7 @@ npm run doctor
 npm run dev
 ```
 
-Open **`http://localhost:4173`**. Cold start settles in under two seconds on a
-recent laptop (median 1.86 s in a point-in-time M5/Chrome capture —
-[docs/PERFORMANCE.md](docs/PERFORMANCE.md); a comparison baseline, not a hardware
-requirement). A first-run card offers to stage a mission for you — **Live
-Contacts**, **Space Missions**, **Environmental** — or leaves you to explore
-manually.
-
-**macOS shortcut:** `./scripts/dev-fresh.sh` clears the Vite cache and pulls any
-configured keys straight from the Keychain. It starts keyless too.
+ 
 
 ### Then power it up — in the app, not in a file
 
