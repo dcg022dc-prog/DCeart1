@@ -85,30 +85,9 @@ apply. Prefer them straight from Google, plus in-app place search? A
 generous free tier ([real numbers](#-api-keys)). Either one pastes straight
 into **Then power it up** below.
 
-### Path 1 — One click, no terminal
+### 
 
-1. Install [Pinokio](https://pinokio.computer/).
-2. In **Discover → Download from URL**, paste
-   `https://github.com/bilawalsidhu/gods-eye-view`.
-3. Click **Install**, then **Start**.
-
-That is the whole thing. The launcher verifies Pinokio's runtime, installs the
-locked dependencies, finds a free local port, and opens the app.
-
-### Path 2 — Terminal / coding agent
-
-Requires Node.js 24.14.x or 26.x. Node 25 is usable but EOL; the setup doctor
-warns instead of blocking it.
-
-```bash
-npm install
-npm run doctor
-npm run dev
-```
-
- 
-
-### Then power it up — in the app, not in a file
+### Path 2 — Terminal / coding  file
 
 Keys are upgrades, not prerequisites. When you want one, click the **POWER UP**
 chip in the bottom-right corner: Provider Settings lists every supported key,
